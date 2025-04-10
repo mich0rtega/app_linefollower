@@ -6,37 +6,37 @@ const ComponentsScreen = () => {
     {
       name: "ESP32",
       description: "Microcontrolador principal con WiFi y Bluetooth integrado",
-      image: require('../assets/images/esp32.png')
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQbV30h0rDeZXGsHCfBRGtDdp6DJJOXJmg6Q&s"
     },
     {
       name: "Sensores IR",
       description: "Detección de línea infrarroja (TCRT5000)",
-      image: require('../assets/images/ir_sensor.png')
+      image: "https://electronicaymas.com.mx/cdn/shop/products/SENSORREFLECTIVO-1.png?v=1667415983"
     },
     {
       name: "Motores DC",
       description: "Motores de 5V con caja reductora para movimiento",
-      image: require('../assets/images/dc_motor.png')
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWnNKxubEqVJsD4k_XcxBgpFfOvkJgmrPxlQ&s"
     },
     {
       name: "Fuente Protoboard",
       description: "Fuente de alimentación MB102 para protoboard",
-      image: require('../assets/images/protoboard_power.png')
+      image: "https://nanoparuro.com/web/image/product.template/226/image_1024?unique=016b3f4"
     },
     {
       name: "Puente H L298N",
       description: "Controlador de motores para dirección y velocidad",
-      image: require('../assets/images/l298n.png')
+      image: "https://www.taloselectronics.com/cdn/shop/products/puente_h_doble_l298n_mexico_jalisco_guadalajara.jpg?v=1593817164"
     },
     {
       name: "Sensor DHT11",
       description: "Sensor de temperatura y humedad ambiental",
-      image: require('../assets/images/dht11.png')
+      image: "https://docs.sunfounder.com/projects/ultimate-sensor-kit-test/en/latest/_images/12_dht11_module.png"
     },
     {
       name: "Sensor BMP180",
       description: "Sensor de presión atmosférica y altitud",
-      image: require('../assets/images/bmp180.png')
+      image: "https://components101.com/sites/default/files/components/BMP180-Sensor-Module_0.png"
     }
   ];
 
@@ -50,9 +50,10 @@ const ComponentsScreen = () => {
         {components.map((item, index) => (
           <View key={index} style={styles.item}>
             <Image 
-              source={item.image} 
+              source={{ uri: item.image }} 
               style={styles.itemImage}
               resizeMode="contain"
+              onError={(e) => console.log('Error loading image:', e.nativeEvent.error)}
             />
             <View style={styles.textContainer}>
               <Text style={styles.itemTitle}>{item.name}</Text>
@@ -65,6 +66,7 @@ const ComponentsScreen = () => {
   );
 };
 
+// Los estilos permanecen igual que en tu código original
 const styles = StyleSheet.create({
   container: {
     flex: 1,
